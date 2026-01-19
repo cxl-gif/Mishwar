@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets - Mishwar</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="bi bi-briefcase-fill me-2"></i>مشوار
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">لوحة التحكم</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="projects.html">المشاريع</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold">Projets</h1>
+            <button class="btn btn-primary" id="newProjectBtn" style="display: none;" onclick="showNewProjectForm()">
+                <i class="bi bi-plus-circle"></i> Nouveau projet
+            </button>
+        </div>
+
+        <div id="projectsList" class="row g-4">
+            <!-- Projects will be loaded here -->
+        </div>
+
+        <div id="noProjects" class="card shadow-sm border-0 d-none">
+            <div class="card-body text-center py-5">
+                <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px;">
+                    <i class="bi bi-inbox fs-1 text-muted"></i>
+                </div>
+                <h5 class="text-muted mb-2">Aucun projet pour le moment</h5>
+                <p class="text-muted small">Commencez par créer votre premier projet</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/projects.js"></script>
+</body>
+</html>
+

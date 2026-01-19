@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Mishwar</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="bi bi-briefcase-fill me-2"></i>Mishwar
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Recherche</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">Tableau de bord</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projets</a></li>
+                </ul>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <span id="userName">Utilisateur</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Déconnexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="mb-4">Bonjour, <span id="userNameDisplay"></span></h1>
+
+        <!-- Stats -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card shadow-sm stats-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="text-muted mb-2">Projets</h5>
+                                <h2 class="text-primary mb-0" id="projectsCount">0</h2>
+                            </div>
+                            <div class="feature-icon" style="width: 60px; height: 60px; margin: 0;">
+                                <i class="bi bi-folder-fill text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="portfolioCard" style="display: none;">
+                <div class="card shadow-sm stats-card" style="border-left-color: var(--secondary-color);">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="text-muted mb-2">Portfolio</h5>
+                                <h2 class="text-secondary mb-0" id="portfolioCount">0</h2>
+                            </div>
+                            <div class="feature-icon" style="width: 60px; height: 60px; margin: 0; background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));">
+                                <i class="bi bi-palette-fill text-secondary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" id="reviewsCard" style="display: none;">
+                <div class="card shadow-sm stats-card" style="border-left-color: var(--success-color);">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="text-muted mb-2">Avis</h5>
+                                <h2 class="text-success mb-0" id="reviewsCount">0</h2>
+                            </div>
+                            <div class="feature-icon" style="width: 60px; height: 60px; margin: 0; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));">
+                                <i class="bi bi-star-fill text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card shadow-lg mb-4 border-0">
+            <div class="card-header border-0">
+                <h5 class="mb-0 fw-bold">Actions rapides</h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-4" id="searchAction" style="display: none;">
+                        <a href="search.html" class="card h-100 text-decoration-none shadow-sm hover-card">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3" style="width: 70px; height: 70px;">
+                                    <i class="bi bi-search fs-2 text-primary"></i>
+                                </div>
+                                <h6 class="fw-bold mb-2">Rechercher des talents</h6>
+                                <p class="text-muted small mb-0">Trouvez le talent parfait pour votre projet</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4" id="newProjectAction" style="display: none;">
+                        <a href="projects.html?new=true" class="card h-100 text-decoration-none shadow-sm hover-card">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3" style="width: 70px; height: 70px;">
+                                    <i class="bi bi-plus-circle fs-2 text-primary"></i>
+                                </div>
+                                <h6 class="fw-bold mb-2">Nouveau projet</h6>
+                                <p class="text-muted small mb-0">Créez un nouveau projet créatif</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4" id="portfolioAction" style="display: none;">
+                        <a href="portfolio.html" class="card h-100 text-decoration-none shadow-sm hover-card">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3" style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));">
+                                    <i class="bi bi-palette fs-2 text-secondary"></i>
+                                </div>
+                                <h6 class="fw-bold mb-2">Gérer le portfolio</h6>
+                                <p class="text-muted small mb-0">Mettez à jour vos meilleurs travaux</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+
